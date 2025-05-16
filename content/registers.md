@@ -197,8 +197,9 @@ Normal / SPI
 
 | Address    | Name                             | Size | Description |
 |------------|----------------------------------|------|-------------|
+| 0x04000120 | [SCD32](#REG_SCD32)              | 32   | Serial data send and receive (32-bit mode) |
 | 0x04000128 | [SCCNT_L](#REG_SCCNT_L)          | 16   | Serial peripheral mode, status, and control |
-| 0x0400012A | [SCCNT_H](#REG_SCCNT_H)          | 8    | Serial data send and receive |
+| 0x0400012A | [SCCNT_H](#REG_SCCNT_H)          | 8    | Serial data send and receive (8-bit mode) |
 
 <h4 id="hardware-register-summary-serial-multiplay"><a class="header" href="#hardware-register-summary-serial-multiplay">
 Multiplay
@@ -1295,6 +1296,13 @@ F E D C  B A 9 8  7 6 5 4  3 2 1 0
 - SCD2 contains the data sent by the second slave (slave2)
 - SCD3 contains the data sent by the last slave (slave3)
 
+<h3 id="REG_SCD32"><a class="header" href="#REG_SCD32">
+0x04000120 - REG_SCD32 (32-bit SPI / Normal mode serial data register)
+</a></h3>
+
+Works just like [SCCNT_H](#REG_SCCNT_H), but only for 32-bit SPI mode.
+
+**Only works in 32-bit mode!** When using 8-bit mode, this register becomes disconnected, reads as zero, and writes are ignored.
 
 <h3 id="REG_SCCNT_L"><a class="header" href="#REG_SCCNT_L">
 0x04000128 - REG_SCCNT_L (Serial Communication channel control register)
